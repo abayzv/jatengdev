@@ -75,7 +75,7 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container class="container-xl">
       <router-view />
     </q-page-container>
 
@@ -109,7 +109,7 @@
               </q-item-section>
             </q-item>
           </q-list>
-          
+
           <!-- Link -->
           <q-list class="row">
             <q-item>
@@ -136,7 +136,7 @@
         </div>
       </div>
     </q-footer>
-    
+
   </q-layout>
 </template>
 
@@ -324,10 +324,10 @@ $container-max-width: (
 }
 
 .copyright {
+
   // on desktop margin right 1rem
   @media (min-width: 1024px) {
     margin-right: 1rem;
   }
 }
-
 </style>
