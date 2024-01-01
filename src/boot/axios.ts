@@ -22,6 +22,11 @@ export const getArticles = async () => {
   return data;
 };
 
+export const getArticleBySlug = async (slug: string) => {
+  const { data } = await api.get(`/posts/${slug}`);
+  return data;
+};
+
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
 
