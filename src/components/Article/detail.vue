@@ -59,6 +59,7 @@ import { defineProps } from 'vue'
 import { Article } from '../models';
 import { PropType } from 'vue';
 import PopularTags from '../PopularTags.vue';
+import { onMounted } from 'vue';
 
 defineProps({
     article: {
@@ -71,7 +72,33 @@ const formatDate = (date: string) => {
     return new Date(date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
+onMounted(() => {
+    // get all pre tag
+    const preTags = document.querySelectorAll('pre')
+
+    // foreach pre tag add copy button
+    preTags.forEach(pre => {
+        const button = document.createElement('button')
+        button.innerHTML = `<i class="mdi mdi-content-copy" ></i> Copy`
+        button.classList.add('btn-copy')
+        button.addEventListener('click', () => {
+            const text = pre.innerText.replace(' Copy', '')
+            navigator.clipboard.writeText(text)
+        })
+        pre.appendChild(button)
+
+        // add event listener to pre tag
+        button.addEventListener('click', () => {
+            button.innerHTML = `<i class="mdi mdi-check" ></i> Copied`
+            setTimeout(() => {
+                button.innerHTML = `<i class="mdi mdi-content-copy" ></i> Copy`
+            }, 1000)
+        })
+    })
+})
+
 </script>
+
 
 <style lang="scss">
 .article-detail {
@@ -136,6 +163,8 @@ const formatDate = (date: string) => {
             padding: 1rem;
             border-radius: 10px;
             overflow-x: auto;
+            position: relative;
+            padding-top: 3rem;
         }
 
         code {
@@ -175,6 +204,18 @@ h1 {
         padding-bottom: 0;
         line-height: 1.5;
     }
+}
+
+.btn-copy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0 10px 0 10px;
+    cursor: pointer;
 }
 
 .thumbnail {
