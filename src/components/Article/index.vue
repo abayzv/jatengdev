@@ -1,5 +1,5 @@
 <template>
-    <div class="q-pa-md">
+    <div class="q-pa-md cursor-pointer" @click="$router.push(`/blog/${article.slug}`)">
         <div v-if="type === 'card'">
             <q-img :src="article.featured_image" class="article-image" />
             <q-btn flat class="category bg-red text-white text-caption q-mt-md">
@@ -68,6 +68,15 @@ const formatDate = (date: string) => {
 
 .thumbnail-small {
     height: 150px;
+
+    @media (max-width: 600px) {
+        height: 80px;
+    }
+
+    @media (min-width: 768px) {
+        height: 150px;
+    }
+
 }
 
 .thumbnail-medium {
@@ -82,6 +91,10 @@ const formatDate = (date: string) => {
     font-size: 18px;
     line-height: 1.5;
     margin-bottom: 0;
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+    }
 }
 
 // excerpt max 2 lines
@@ -90,5 +103,14 @@ const formatDate = (date: string) => {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+
+    // hide on mobile
+    @media (max-width: 600px) {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        display: -webkit-box;
+    }
 }
 </style>

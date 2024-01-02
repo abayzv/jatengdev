@@ -9,7 +9,7 @@
             <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" class="show hide-lg" />
 
             <q-toolbar-title>
-              <q-img src="../assets/logo-jatengdev.svg" width="150px" />
+              <q-img src="../assets/logo-jatengdev.svg" width="150px" @click="$router.push('/')" class="cursor-pointer" />
             </q-toolbar-title>
 
             <q-space />
@@ -80,59 +80,63 @@
     </q-page-container>
 
     <q-footer bordered class="bg-white q-pa-md text-grey-7 q-py-xl">
-      <div class="container-xl flex justify-between">
-        <div style="width: 500px;">
-          <q-img src="../assets/logo-jatengdev.svg" width="150px" />
-          <p class="text-body1 q-mt-md">
-            JatengDev adalah komunitas pengembang perangkat lunak di Jawa Tengah yang berfokus pada pengembangan
-            aplikasi berbasis web dan mobile.
-          </p>
+      <div class="container-xl row justify-between">
+        <div class="col-4 col-flex">
+          <div>
+            <q-img src="../assets/logo-jatengdev.svg" width="150px" @click="$router.push('/')" class="cursor-pointer" />
+            <p class="text-body1 q-mt-md">
+              JatengDev adalah komunitas pengembang perangkat lunak di Jawa Tengah yang berfokus pada pengembangan
+              aplikasi berbasis web dan mobile.
+            </p>
+          </div>
         </div>
 
-        <div class="footer2">
-          <q-item-label class="text-weight-bold" header>Connect With US</q-item-label>
-          <!-- Social -->
-          <q-list class="row">
-            <q-item>
-              <q-item-section>
-                <q-btn flat round icon="ion-logo-facebook" class="bg-outline" />
-              </q-item-section>
-            </q-item>
-            <q-item>
-              <q-item-section>
-                <q-btn flat round icon="ion-logo-linkedin" class="bg-outline" />
-              </q-item-section>
-            </q-item>
-            <q-item>
-              <q-item-section>
-                <q-btn flat round icon="ion-logo-instagram" class="bg-outline" />
-              </q-item-section>
-            </q-item>
-          </q-list>
+        <div class="col-6 col-flex">
+          <div class="footer2">
+            <q-item-label class="text-weight-bold" header>Connect With US</q-item-label>
+            <!-- Social -->
+            <q-list class="row">
+              <q-item>
+                <q-item-section>
+                  <q-btn flat round icon="ion-logo-facebook" class="bg-outline" />
+                </q-item-section>
+              </q-item>
+              <q-item>
+                <q-item-section>
+                  <q-btn flat round icon="ion-logo-linkedin" class="bg-outline" />
+                </q-item-section>
+              </q-item>
+              <q-item>
+                <q-item-section>
+                  <q-btn flat round icon="ion-logo-instagram" class="bg-outline" />
+                </q-item-section>
+              </q-item>
+            </q-list>
 
-          <!-- Link -->
-          <q-list class="row">
-            <q-item>
-              <q-item-section>
-                <q-item-label>About Jateng Dev</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item>
-              <q-item-section>
-                <q-item-label>Privacy Policy</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item>
-              <q-item-section>
-                <q-item-label>Contact Us</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
+            <!-- Link -->
+            <q-list class="row">
+              <q-item>
+                <q-item-section>
+                  <q-item-label>About Jateng Dev</q-item-label>
+                </q-item-section>
+              </q-item>
+              <q-item>
+                <q-item-section>
+                  <q-item-label>Privacy Policy</q-item-label>
+                </q-item-section>
+              </q-item>
+              <q-item>
+                <q-item-section>
+                  <q-item-label>Contact Us</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
 
-          <!-- Copyright -->
-          <q-item-label class="copyright">
-            Copyright © 2021 JatengDev. All rights reserved
-          </q-item-label>
+            <!-- Copyright -->
+            <q-item-label class="copyright">
+              Copyright © 2021 JatengDev. All rights reserved
+            </q-item-label>
+          </div>
         </div>
       </div>
     </q-footer>
@@ -182,32 +186,32 @@ const subMenus = [
   {
     title: 'Laravel',
     menu: 'laravel',
-    link: '?category=laravel'
+    link: '/?category=laravel'
   },
   {
     title: 'Vue',
     menu: 'vue',
-    link: '?category=vue'
+    link: '/?category=vue'
   },
   {
     title: 'React',
     menu: 'react',
-    link: '?category=react'
+    link: '/?category=react'
   },
   {
     title: 'Javascript',
     menu: 'javascript',
-    link: '?category=javascript'
+    link: '/?category=javascript'
   },
   {
     title: 'PHP',
     menu: 'php',
-    link: '?category=php'
+    link: '/?category=php'
   },
   {
     title: 'Python',
     menu: 'python',
-    link: '?category=python'
+    link: '/?category=python'
   }
 ]
 
@@ -316,7 +320,7 @@ $container-max-width: (
     align-items: center;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -328,6 +332,14 @@ $container-max-width: (
   // on desktop margin right 1rem
   @media (min-width: 1024px) {
     margin-right: 1rem;
+  }
+}
+</style>
+
+<style lang="scss">
+.col-flex {
+  @media (max-width: 768px) {
+    width: 100% !important;
   }
 }
 </style>
